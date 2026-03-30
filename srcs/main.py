@@ -3,8 +3,11 @@ Main program for Caesar Cipher, Rail Fence, and Product Cipher demonstrations
 """
 
 import caesar
+import railfence
+import product_cipher
 import os
 import sys
+
 
 
 def caesar_menu():
