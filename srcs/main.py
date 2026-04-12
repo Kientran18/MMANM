@@ -1,100 +1,133 @@
-"""
-Main program for Caesar Cipher, Rail Fence, and Product Cipher demonstrations
-"""
 
-import caesar
-import railfence
-import product_cipher
+
 import os
-import sys
-
+from caesar import (
+    encrypt,
+    decrypt,
+    brute_force_exhaustive_display,
+    brute_force_frequency_analysis_display,
+    encrypt_file,
+    decrypt_file
+)
 
 
 def caesar_menu():
-    """Interactive menu for Caesar Cipher operations"""
+    
     while True:
-        print("\n" + "="*50)
-        print("CAESAR CIPHER - Interactive Menu")
-        print("="*50)
-        print("1. Encrypt text")
-        print("2. Decrypt text")
-        print("3. Brute force attack")
-        print("4. Encrypt file")
-        print("5. Decrypt file")
-        print("6. Frequency analysis")
-        print("0. Back to main menu")
-        print("-"*50)
+        print("\n" + "=" * 70)
+        print("CAESAR CIPHER - BRUTE FORCE ATTACK")
+        print("=" * 70)
+        print("1. Mã hóa văn bản")
+        print("2. Giải mã văn bản")
+        print("3. Duyệt Cạn (Exhaustive Search)")
+        print("4. Phân tích Tần suất (Frequency Analysis)")
+        print("5. Mã hóa file")
+        print("6. Giải mã file")
+        print("0. Quay lại")
+        print("=" * 70)
         
-        choice = input("Enter your choice (0-6): ").strip()
+        choice = input("Chọn chức năng (0-6): ").strip()
         
-        if choice == '1':
-            plaintext = input("Enter plaintext: ")
-            key = int(input("Enter key (0-25): "))
-            ciphertext = caesar.encrypt(plaintext, key)
-            print(f"\nCiphertext: {ciphertext}\n")
+        if choice == "1":
+            # Mã hóa
+            plaintext = input("\nNhập văn bản gốc: ")
+            try:
+                key = int(input("Nhập khóa (0-25): "))
+                if 0 <= key <= 25:
+                    ciphertext = encrypt(plaintext, key)
+                    print(f"\n Văn bản mã hóa: {ciphertext}")
+                else:
+                    print(" Khóa phải trong khoảng 0-25!")
+            except ValueError:
+                print(" Khóa phải là số nguyên!")
         
-        elif choice == '2':
-            ciphertext = input("Enter ciphertext: ")
-            key = int(input("Enter key (0-25): "))
-            plaintext = caesar.decrypt(ciphertext, key)
-            print(f"\nPlaintext: {plaintext}\n")
+        elif choice == "2":
+            # Giải mã
+            ciphertext = input("\nNhập văn bản mã hóa: ")
+            try:
+                key = int(input("Nhập khóa (0-25): "))
+                if 0 <= key <= 25:
+                    plaintext = decrypt(ciphertext, key)
+                    print(f"\n Văn bản giải mã: {plaintext}")
+                else:
+                    print(" Khóa phải trong khoảng 0-25!")
+            except ValueError:
+                print(" Khóa phải là số nguyên!")
         
-        elif choice == '3':
-            ciphertext = input("Enter ciphertext: ")
-            print("\nBrute Force Results:")
-            caesar.brute_force_display(ciphertext)
+        elif choice == "3":
+            ciphertext = input("\nNhập văn bản mã hóa: ")
+            brute_force_exhaustive_display(ciphertext)
+            input("Nhấn Enter để tiếp tục...")
         
-        elif choice == '4':
-            input_file = input("Enter input file path: ").strip()
-            output_file = input("Enter output file path: ").strip()
-            key = int(input("Enter key (0-25): "))
-            caesar.encrypt_file(input_file, output_file, key)
+        elif choice == "4":
+            ciphertext = input("\nNhập văn bản mã hóa: ")
+            try:
+                top_n = int(input("Hiển thị top bao nhiêu khóa? (mặc định 5): ") or "5")
+                brute_force_frequency_analysis_display(ciphertext, top_n)
+            except ValueError:
+                brute_force_frequency_analysis_display(ciphertext, 5)
+            input("Nhấn Enter để tiếp tục...")
         
-        elif choice == '5':
-            input_file = input("Enter input file path: ").strip()
-            output_file = input("Enter output file path: ").strip()
-            key = int(input("Enter key (0-25): "))
-            caesar.decrypt_file(input_file, output_file, key)
+        elif choice == "5":
+            input_file = input("\nNhập đường dẫn file gốc (mặc định: data/plaintext.txt): ").strip() or "data/plaintext.txt"
+            output_file = input("Nhập đường dẫn file mã hóa (mặc định: data/ciphertext.txt): ").strip() or "data/ciphertext.txt"
+            try:
+                key = int(input("Nhập khóa (0-25): "))
+                if 0 <= key <= 25:
+                    encrypt_file(input_file, output_file, key)
+                    print(f" Khóa được sử dụng: {key}")
+                else:
+                    print(" Khóa phải trong khoảng 0-25!")
+            except ValueError:
+                print(" Khóa phải là số nguyên!")
         
-        elif choice == '6':
-            text = input("Enter text for frequency analysis: ")
-            freq = caesar.analyze_frequency(text)
-            caesar.print_frequency(freq)
+        elif choice == "6":
+            input_file = input("\nNhập đường dẫn file mã hóa (mặc định: data/ciphertext.txt): ").strip() or "data/ciphertext.txt"
+            output_file = input("Nhập đường dẫn file giải mã (mặc định: data/decrypted.txt): ").strip() or "data/decrypted.txt"
+            try:
+                key = int(input("Nhập khóa (0-25): "))
+                if 0 <= key <= 25:
+                    decrypt_file(input_file, output_file, key)
+                    print(f"✓ Khóa được sử dụng: {key}")
+                else:
+                    print("✗ Khóa phải trong khoảng 0-25!")
+            except ValueError:
+                print("✗ Khóa phải là số nguyên!")
         
-        elif choice == '0':
+        elif choice == "0":
+            print("Quay lại menu chính...\n")
             break
         
         else:
-            print("Invalid choice! Please try again.")
+            print("✗ Lựa chọn không hợp lệ!")
 
 
 def main():
-    """Main program entry point"""
-    print("\n" + "="*50)
-    print("CRYPTOGRAPHY ALGORITHMS - H252")
-    print("="*50)
+    """Menu chính."""
     
     while True:
-        print("\nMain Menu:")
-        print("1. Caesar Cipher")
-        print("2. Rail Fence Cipher")
-        print("3. Product Cipher")
-        print("0. Exit")
-        print("-"*50)
+        print("\n" + "=" * 70)
+        print("MÃ HÓA - GIẢI MÃ VÀ TẤN CÔNG")
+        print("=" * 70)
+        print("1. Caesar Cipher (Duyệt Cạn + Phân tích Tần suất)")
+        print("2. Rail Fence Cipher (Sắp tới...)")
+        print("3. Product Cipher (Sắp tới...)")
+        print("0. Thoát")
+        print("=" * 70)
         
-        choice = input("Select cipher (0-3): ").strip()
+        choice = input("Chọn mã hóa (0-3): ").strip()
         
-        if choice == '1':
+        if choice == "1":
             caesar_menu()
-        elif choice == '2':
-            print("Rail Fence Cipher - Not yet implemented")
-        elif choice == '3':
-            print("Product Cipher - Not yet implemented")
-        elif choice == '0':
-            print("Thank you for using the program!")
+        elif choice == "2":
+            print("\n Rail Fence Cipher sẽ sớm được phát triển...")
+        elif choice == "3":
+            print("\n Product Cipher sẽ sớm được phát triển...")
+        elif choice == "0":
+            print("\n Tạm biệt!\n")
             break
         else:
-            print("Invalid choice! Please try again.")
+            print("✗ Lựa chọn không hợp lệ!")
 
 
 if __name__ == "__main__":
