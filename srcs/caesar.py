@@ -419,6 +419,121 @@ def decrypt_file(input_file, output_file, key):
     except Exception as e:
         print(f"Error: {e}")
 
+def _adaptive_frequency_top_n(ciphertext, n=5):
+    """
+    Adaptive top-N candidates:
+    - short/medium text: unigram
+    - long text: bigram
+    """
+    char_count = sum(1 for c in ciphertext if c.isalpha())
+    if char_count < 100:
+        return brute_force_frequency_analysis_top_n(ciphertext, n), "Unigram Frequency Analysis"
+    else:
+        return brute_force_frequency_analysis_bigram_top_n(ciphertext, n), "Unigram + Bigram Frequency Analysis"
+
+
+def cryptanalyze_file_exhaustive(input_file, output_file):
+    """
+    Cryptanalysis for file using Exhaustive Search.
+    - Tries all 26 keys
+    - Saves all candidates to output file
+    - Also ranks them using chi-squared for easier reading
+    """
+    try:
+        with open(input_file, "r", encoding="utf-8") as f:
+            ciphertext = f.read()
+
+        expected_freq = standard_english_freq()
+        results = []
+
+        for key, plaintext in brute_force_exhaustive(ciphertext):
+            observed_freq = analyze_frequency(plaintext)
+            score = chi_squared_test(observed_freq, expected_freq)
+            results.append((key, plaintext, score))
+
+        results.sort(key=lambda x: x[2])
+        best_key, best_plaintext, best_score = results[0]
+
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write("=== CAESAR CRYPTANALYSIS RESULT (EXHAUSTIVE SEARCH) ===\n")
+            f.write(f"Best key (ranked by chi-squared): {best_key}\n")
+            f.write(f"Best score: {best_score:.4f}\n\n")
+
+            f.write("All 26 candidates:\n")
+            f.write("-" * 100 + "\n")
+            f.write(f"{'Rank':<5} {'Key':<7} {'Chi-Squared':<16} {'Decrypted Text'}\n")
+            f.write("-" * 100 + "\n")
+
+            for rank, (key, plaintext, score) in enumerate(results, start=1):
+                marker = " [BEST KEY]" if key == best_key else ""
+                preview = plaintext[:120].replace("\n", " ")
+                f.write(f"{rank:<5} {key:<7} {score:<16.4f} {preview}{marker}\n")
+
+            f.write("-" * 100 + "\n")
+            f.write(f"\nRecovered plaintext (best candidate, key={best_key}):\n")
+            f.write(best_plaintext)
+
+        print(f"Exhaustive cryptanalysis result saved to: {output_file}")
+        print(f"Recovered key: {best_key}")
+
+    except FileNotFoundError:
+        print(f"Error: File not found - {input_file}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+def cryptanalyze_file_frequency(input_file, output_file, top_n=5):
+    """
+    Cryptanalysis for file using Frequency Analysis.
+    - Uses adaptive method:
+      short/medium text -> unigram
+      long text -> unigram + bigram
+    - Saves best candidate and top-N ranking to output file
+    """
+    try:
+        with open(input_file, "r", encoding="utf-8") as f:
+            ciphertext = f.read()
+
+        recommendation = recommend_analysis_method(ciphertext)
+        top_candidates, method_name = _adaptive_frequency_top_n(ciphertext, top_n)
+
+        char_count = sum(1 for c in ciphertext if c.isalpha())
+        if char_count < 100:
+            best_key, best_plaintext, best_score = brute_force_frequency_analysis(ciphertext)
+        else:
+            best_key, best_plaintext, best_score = brute_force_frequency_analysis_bigram(ciphertext)
+
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write("=== CAESAR CRYPTANALYSIS RESULT (FREQUENCY ANALYSIS) ===\n")
+            f.write(f"Recommended method: {recommendation['method']}\n")
+            f.write(f"Confidence: {recommendation['confidence']}\n")
+            f.write(f"Characters analyzed: {recommendation['char_count']}\n")
+            f.write(f"Method used: {method_name}\n")
+            f.write(f"Recovered key: {best_key}\n")
+            f.write(f"Best score: {best_score:.4f}\n\n")
+
+            f.write(f"Top {len(top_candidates)} candidates:\n")
+            f.write("-" * 100 + "\n")
+            f.write(f"{'Rank':<5} {'Key':<7} {'Score':<16} {'Decrypted Text'}\n")
+            f.write("-" * 100 + "\n")
+
+            for rank, (key, plaintext, score) in enumerate(top_candidates, start=1):
+                marker = " [BEST KEY]" if key == best_key else ""
+                preview = plaintext[:120].replace("\n", " ")
+                f.write(f"{rank:<5} {key:<7} {score:<16.4f} {preview}{marker}\n")
+
+            f.write("-" * 100 + "\n")
+            f.write(f"\nRecovered plaintext (best candidate, key={best_key}):\n")
+            f.write(best_plaintext)
+
+        print(f"Frequency cryptanalysis result saved to: {output_file}")
+        print(f"Recovered key: {best_key}")
+
+    except FileNotFoundError:
+        print(f"Error: File not found - {input_file}")
+    except Exception as e:
+        print(f"Error: {e}")
+
 
 def recommend_analysis_method(ciphertext):
     """

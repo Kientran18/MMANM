@@ -1,0 +1,40 @@
+=== CAESAR CRYPTANALYSIS RESULT (EXHAUSTIVE SEARCH) ===
+Best key (ranked by chi-squared): 3
+Best score: 74.0648
+
+All 26 candidates:
+----------------------------------------------------------------------------------------------------
+Rank  Key     Chi-Squared      Decrypted Text
+----------------------------------------------------------------------------------------------------
+1     3       74.0648          Long before Austenmania overtook America and England in the mid-1990s, when major films and television miniseries were p [BEST KEY]
+2     9       6313.9053        Fiha vyzily Uomnyhguhcu ipylniie Ugylcwu uhx Yhafuhx ch nby gcx-1990m, qbyh gudil zcfgm uhx nyfypcmcih gchcmylcym qyly j
+3     16      6425.1615        Ybat orsber Nhfgraznavn biregbbx Nzrevpn naq Ratynaq va gur zvq-1990f, jura znwbe svyzf naq gryrivfvba zvavfrevrf jrer c
+4     15      8294.6036        Zcbu pstcfs Oighsbaobwo cjsfhccy Oasfwqo obr Sbuzobr wb hvs awr-1990g, kvsb aoxcf twzag obr hszsjwgwcb awbwgsfwsg ksfs d
+5     14      8411.6681        Adcv qtudgt Pjhitcbpcxp dktgiddz Pbtgxrp pcs Tcvapcs xc iwt bxs-1990h, lwtc bpydg uxabh pcs itatkxhxdc bxcxhtgxth ltgt e
+6     25      9389.4541        Psrk fijsvi Eywxirqerme szivxsso Eqivmge erh Irkperh mr xli qmh-1990w, alir qensv jmpqw erh xipizmwmsr qmrmwivmiw aivi t
+7     2       10234.2539       Mpoh cfgpsf Bvtufonbojb pwfsuppl Bnfsjdb boe Fohmboe jo uif nje-1990t, xifo nbkps gjmnt boe ufmfwjtjpo njojtfsjft xfsf q
+8     19      12190.0284       Vyxq lopybo Kecdoxwkxsk yfobdyyu Kwobsmk kxn Oxqvkxn sx dro wsn-1990c, grox wktyb psvwc kxn dovofscsyx wsxscobsoc gobo z
+9     11      12327.5259       Dgfy twxgjw Smklwfesfas gnwjlggc Sewjaus sfv Wfydsfv af lzw eav-1990k, ozwf esbgj xadek sfv lwdwnakagf eafakwjawk owjw h
+10    5       13390.7976       Jmle zcdmpc Ysqrclkylgy mtcprmmi Ykcpgay ylb Clejylb gl rfc kgb-1990q, ufcl kyhmp dgjkq ylb rcjctgqgml kglgqcpgcq ucpc n
+11    22      13441.7773       Svun ilmvyl Hbzaluthuph vclyavvr Htlypjh huk Lunshuk pu aol tpk-1990z, dolu thqvy mpstz huk alslcpzpvu tpupzlyplz dlyl w
+12    7       13815.6119       Hkjc xabkna Wqopajiwjew kranpkkg Wianeyw wjz Ajchwjz ej pda iez-1990o, sdaj iwfkn behio wjz pahareoekj iejeoaneao sana l
+13    18      13938.4582       Wzyr mpqzcp Lfdepyxlytl zgpcezzv Lxpctnl lyo Pyrwlyo ty esp xto-1990d, hspy xluzc qtwxd lyo epwpgtdtzy xtytdpctpd hpcp a
+14    0       13964.5829       Orqj ehiruh Dxvwhqpdqld ryhuwrrn Dphulfd dqg Hqjodqg lq wkh plg-1990v, zkhq pdmru ilopv dqg whohylvlrq plqlvhulhv zhuh s
+15    1       14763.0077       Nqpi dghqtg Cwuvgpocpkc qxgtvqqm Cogtkec cpf Gpincpf kp vjg okf-1990u, yjgp oclqt hknou cpf vgngxkukqp okpkugtkgu ygtg r
+16    20      18876.3123       Uxwp knoxan Jdbcnwvjwrj xenacxxt Jvnarlj jwm Nwpujwm rw cqn vrm-1990b, fqnw vjsxa oruvb jwm cnunerbrxw vrwrbnarnb fnan y
+17    12      20655.5171       Cfex svwfiv Rljkvedrezr fmvikffb Rdviztr reu Vexcreu ze kyv dzu-1990j, nyve drafi wzcdj reu kvcvmzjzfe dzezjvizvj nviv g
+18    10      21398.9603       Ehgz uxyhkx Tnlmxgftgbt hoxkmhhd Tfxkbvt tgw Xgzetgw bg max fbw-1990l, paxg ftchk ybefl tgw mxexoblbhg fbgblxkbxl pxkx i
+19    21      21892.5312       Twvo jmnwzm Icabmvuivqi wdmzbwws Iumzqki ivl Mvotivl qv bpm uql-1990a, epmv uirwz nqtua ivl bmtmdqaqwv uqvqamzqma emzm x
+20    23      22943.9389       Rutm hkluxk Gayzktsgtog ubkxzuuq Gskxoig gtj Ktmrgtj ot znk soj-1990y, cnkt sgpux lorsy gtj zkrkboyout sotoykxoky ckxk v
+21    13      23025.2279       Bedw ruvehu Qkijudcqdyq eluhjeea Qcuhysq qdt Udwbqdt yd jxu cyt-1990i, mxud cqzeh vybci qdt jubulyiyed cydyiuhyui muhu f
+22    6       24658.6627       Ilkd ybclob Xrpqbkjxkfx lsboqllh Xjbofzx xka Bkdixka fk qeb jfa-1990p, tebk jxglo cfijp xka qbibsfpflk jfkfpbofbp tbob m
+23    4       25612.6153       Knmf adenqd Ztrsdmlzmhz nudqsnnj Zldqhbz zmc Dmfkzmc hm sgd lhc-1990r, vgdm lzinq ehklr zmc sdkduhrhnm lhmhrdqhdr vdqd o
+24    24      29845.1549       Qtsl gjktwj Fzxyjsrfsnf tajwyttp Frjwnhf fsi Jslqfsi ns ymj rni-1990x, bmjs rfotw knqrx fsi yjqjanxnts rnsnxjwnjx bjwj u
+25    8       41878.1752       Gjib wzajmz Vpnozihvidv jqzmojjf Vhzmdxv viy Zibgviy di ocz hdy-1990n, rczi hvejm adghn viy ozgzqdndji hdidnzmdzn rzmz k
+26    17      42943.5031       Xazs nqradq Mgefqzymzum ahqdfaaw Myqduom mzp Qzsxmzp uz ftq yup-1990e, itqz ymvad ruxye mzp fqxqhueuaz yuzueqduqe iqdq b
+----------------------------------------------------------------------------------------------------
+
+Recovered plaintext (best candidate, key=3):
+Long before Austenmania overtook America and England in the mid-1990s, when major films and television miniseries were produced on Jane Austen’s most popular novel, Pride and Prejudice, and three other of this novels Austen inspired adults, young people, private, proprietary sense of “Jane,” as though the great English novelist were a close acquaintance. Rudyard Kipling exploited this phenomenon in his short story “The Janeites,” which describes several members of a secret Jane Austen society, a group of soldiers in the trenches of World War I, well versed in Austen trivia and gallant defenders of “Jane” and the world she created. Both the jealously guarded private fantasy and the recent popular cultural phenomenon may be attributed in part to the enduring power of Austen’s genius as a writer: her ability to create singular characters who linger in one’s imagination, her unparalleled sense of irony and wit, her brilliant dialogue, and her carefully woven plots.
+At the same time, Austen delivers a satisfying romance, more so in Pride and Prejudice than in her other novels, and the sheer happiness of her main characters at the novel’s end has its own appeal. Above all though, and in Pride and Prejudice especially, Austen appeals to modern readers’ nostalgia for a world of social, moral, and economic stability, but one where characters are free to make their own choices and pursue their hearts’ desires. The formal civility, the carefully prescribed manners, and sexual mores, set against a backdrop of village community, stately manor houses, and an English landscape devoid of industrial turmoil and the brisk pace of modern technology—these are a welcome escape for today’s reader.
+So, too, the heroine Elizabeth Bennet’s bold independence and insistence on placing individual preference above economic motive in marriage satisfies our desire for a plot shaped through the pursuit of personal fulfillment. A convention of morality tales of Austen’s time is that individuals’ personal freedoms and aspirations cannot be easily reconciled with their responsibilities to family and community. Often weddings bliss are about to ring at the story’s conclusion. When weddings bells are about to ring at the story’s conclusion, we know that the two sets of main characters have made marriages of affection and that these happy unions actually enhance the stability of society.

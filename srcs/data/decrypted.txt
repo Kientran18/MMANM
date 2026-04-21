@@ -1,1 +1,0 @@
-Caesar Cipher is a substitution cipher where each letter of the plaintext is shifted a certain number of places down the alphabet.
